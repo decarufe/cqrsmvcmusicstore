@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F1A1A3C2-2693-4082-B1F1-6B5A675884A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Demo.Processing</RootNamespace>
+    <AssemblyName>Demo.Processing</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <HintPath>..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\lib\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\lib\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <HintPath>..\lib\NServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <HintPath>..\lib\NServiceBus.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus.Host, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <HintPath>..\lib\NServiceBus.Host.exe</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=2.0.4.37059, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\lib\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommandHandlers\AddToCartCommandHandler.cs" />
+    <Compile Include="CommandHandlers\RemoveFromCartCommandHandler.cs" />
+    <Compile Include="CommandHandlers\ShipItemCommandHandler.cs" />
+    <Compile Include="Endpoint.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.Commands\Demo.Commands.csproj">
+      <Project>{F01131C7-10BF-4DC0-8A8A-BB55FFF740C5}</Project>
+      <Name>Demo.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demo.Domain\Demo.Domain.csproj">
+      <Project>{B3F9C1B6-9EA7-4A78-AC19-86A210893376}</Project>
+      <Name>Demo.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demo.Events\Demo.Events.csproj">
+      <Project>{589A8320-F7FD-44BA-A734-5C69E8B917D4}</Project>
+      <Name>Demo.Events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProcessingEndpoint.Config\ProcessingEndpoint.Config.csproj">
+      <Project>{9CBA269B-6716-44CD-9D9D-B369409FB19A}</Project>
+      <Name>ProcessingEndpoint.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleCqrs.EventStore.SqlServer\SimpleCqrs.EventStore.SqlServer.csproj">
+      <Project>{BEEBFC8E-91EC-4E24-8223-395C2302C1B3}</Project>
+      <Name>SimpleCqrs.EventStore.SqlServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleCqrs.NServiceBus.Core\SimpleCqrs.NServiceBus.csproj">
+      <Project>{07C2BF77-9646-4C39-BDB2-852B76AA6C75}</Project>
+      <Name>SimpleCqrs.NServiceBus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleCqrs.Unity\SimpleCqrs.Unity.csproj">
+      <Project>{00634E6C-A282-404A-B08B-338FD4CA41A9}</Project>
+      <Name>SimpleCqrs.Unity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpleCqrs\SimpleCqrs.csproj">
+      <Project>{E04C12B5-A6D3-4D64-9F38-896BEE68162E}</Project>
+      <Name>SimpleCqrs</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
