@@ -12,7 +12,7 @@ namespace Demo.Denormalizers
       IHandleDomainEvents<Demo.Events.CartItemAddedEvent>,
       IHandleDomainEvents<Demo.Events.CartItemRemovedEvent>
    {
-      private static string _connectionString = @"Server=.\sqlexpress;Database=DEMO_MVC;Trusted_Connection=True;";
+		 private static string _connectionString = @"Server=.\sqlexpress;Database=Demo.Data.DEMO_MVC;Trusted_Connection=True;";
       public void Handle(Events.CartItemAddedEvent domainEvent)
       {         
          using (var connexion = new SqlConnection(_connectionString))
