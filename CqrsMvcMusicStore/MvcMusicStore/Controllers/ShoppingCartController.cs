@@ -59,7 +59,7 @@ namespace MvcMusicStore.Controllers
          
             var viewModel = new ShoppingCartViewModel
             {
-               CartItems = albums.Select(a => new Cart() { Album = a, AlbumId = a.AlbumId, CartId = Guid.NewGuid().ToString(), Count = albumIds.Count(id => id == a.AlbumId), DateCreated = DateTime.Now, RecordId = 0 }).ToList(),
+               CartItems = albums.Select(a => new Cart() { Album = a, AlbumId = a.AlbumId, CartId = Guid.NewGuid().ToString(), Count = albumIds.Count(id => id == a.AlbumId), DateCreated = DateTime.Now, RecordId = a.AlbumId }).ToList(),
                CartTotal = albumIds.Count()
             };
 

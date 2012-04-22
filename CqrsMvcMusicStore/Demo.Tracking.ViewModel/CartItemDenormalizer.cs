@@ -20,7 +20,7 @@ namespace Demo.Tracking.ViewModel
 
             using (var command = connexion.CreateCommand())
             {
-               command.CommandText = "UPDATE Retrait SET Count = Count + 1 WHERE ID = @ID IF @@ROWCOUNT = 0 INSERT INTO Retrait (Id, Count) values(@ID, 0)";
+               command.CommandText = "UPDATE Retrait SET Count = Count + 1 WHERE ID = @ID IF @@ROWCOUNT = 0 INSERT INTO Retrait (Id, Count) values(@ID, 1)";
                command.Parameters.Add("@ID", SqlDbType.Int).Value = domainEvent.Id;
 
                command.ExecuteNonQuery();
