@@ -17,6 +17,11 @@ namespace MvcMusicStore.Controllers
         //
         // GET: /ShoppingCart/
 
+        public ActionResult Confirmation()
+        {
+           return View(new object());
+        }
+
         public ActionResult Index()
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
@@ -81,7 +86,9 @@ namespace MvcMusicStore.Controllers
            MvcApplication.Bus.Send(command);
 
             // Go back to the main store page for more shopping
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+
+           return RedirectToAction("Confirmation");
         }
 
         //

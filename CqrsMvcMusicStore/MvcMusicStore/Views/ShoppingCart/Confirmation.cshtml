@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Confirmation";
+}
+
+<h2>Add more items</h2>
+
+<p class="button">
+        @Html.ActionLink("Yes please!", "Index", 
+        "Store", new { }, "")
+</p>
+
+<p class="button">
+        @Html.ActionLink("No, thank you!", "Index", 
+        "ShoppingCart", new { }, "")
+</p>
