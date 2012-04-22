@@ -11,7 +11,7 @@ namespace Demo.Processing.CommandHandlers
    {
       public override void Handle(Commands.RemoveFromCartCommand command, Domain.CartItem aggregateRoot)
       {
-         aggregateRoot.Delete();
+         aggregateRoot.Delete(command.Id);
       }
    }
 }

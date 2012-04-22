@@ -19,9 +19,9 @@ namespace Demo.Domain
          Apply(new CartItemAddedEvent { Id = id });
       }
 
-      public void Delete()
+      public void Delete(int id)
       {
-         Apply(new CartItemRemovedEvent() { AggregateRootId = base.Id });
+         Apply(new CartItemRemovedEvent() { AggregateRootId = base.Id, Id = id });
       }
 
       public void Ship()
